@@ -66,10 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Function to handle skip button
-  skipButton.addEventListener('click', () => {
-    window.location.href = "home.html";
-  } );
+  // // Function to handle skip button
+  // skipButton.addEventListener('click', () => {
+  //   window.location.href = "home.html";
+  // } );
 
   // Redirect to main page after video ends
   promoVideo.addEventListener("ended", () => {
