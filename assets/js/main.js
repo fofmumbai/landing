@@ -1,5 +1,191 @@
+// Get all sticker elements
+const stickers = document.querySelectorAll("#sticker");
+
+// Configuration for random movement
+const config = {
+  minRadius: 20, // Minimum movement radius
+  maxRadius: 100, // Maximum movement radius
+  minDuration: 2, // Minimum animation duration in seconds
+  maxDuration: 5, // Maximum animation duration in seconds
+  minInterval: 1000, // Minimum time between movements (ms)
+  maxInterval: 3000, // Maximum time between movements (ms)
+  maxRotation: 0, // Maximum rotation in degrees
+  boundsMargin: 50, // Margin from viewport edges
+};
+
+// Store initial positions and states for each sticker
+const stickerStates = new Map();
+
+// Initialize sticker states
+stickers.forEach((sticker) => {
+  const rect = sticker.getBoundingClientRect();
+  stickerStates.set(sticker, {
+    initialX: rect.left,
+    initialY: rect.top,
+    currentX: 0,
+    currentY: 0,
+    rotation: 0,
+    isDragging: false,
+    interval: null,
+  });
+});
+
+// Utility functions
+const random = (min, max) => Math.random() * (max - min) + min;
+const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+// Function to check if position is within viewport bounds
+function isInBounds(x, y) {
+  const margin = config.boundsMargin;
+  return (
+    x >= margin &&
+    x <= window.innerWidth - margin &&
+    y >= margin &&
+    y <= window.innerHeight - margin
+  );
+}
+
+// Generate new random position
+function getNewPosition(sticker, state) {
+  let attempts = 0;
+  let newX, newY;
+
+  // Try to find a valid position within bounds
+  do {
+    const radius = random(config.minRadius, config.maxRadius);
+    const angle = random(0, Math.PI * 2);
+
+    newX = state.initialX + radius * Math.cos(angle);
+    newY = state.initialY + radius * Math.sin(angle);
+
+    attempts++;
+  } while (!isInBounds(newX, newY) && attempts < 10);
+
+  return { x: newX - state.initialX, y: newY - state.initialY };
+}
+
+// Animate individual sticker
+function animateSticker(sticker) {
+  const state = stickerStates.get(sticker);
+
+  if (!state.isDragging) {
+    // Generate random movement parameters
+    const newPos = getNewPosition(sticker, state);
+    const duration = random(config.minDuration, config.maxDuration);
+    const rotation = random(-config.maxRotation, config.maxRotation);
+
+    // Apply smooth transition with random easing
+    const easings = [
+      "ease-in-out",
+      "ease-out",
+      "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+    ];
+    const randomEasing = easings[Math.floor(random(0, easings.length))];
+
+    // Update state
+    state.currentX = newPos.x;
+    state.currentY = newPos.y;
+    state.rotation = rotation;
+
+    // Apply animation
+    sticker.style.transition = `transform ${duration}s ${randomEasing}`;
+    sticker.style.transform = `
+            translate(${newPos.x}px, ${newPos.y}px)
+            rotate(${rotation}deg)
+            scale(${random(0.95, 1.05)})
+        `;
+
+    // Schedule next animation with random interval
+    clearTimeout(state.interval);
+    state.interval = setTimeout(() => {
+      animateSticker(sticker);
+    }, random(config.minInterval, config.maxInterval));
+  }
+}
+
+// Initialize dragging functionality
+stickers.forEach((sticker) => {
+  const state = stickerStates.get(sticker);
+  let initialDragX, initialDragY;
+
+  function dragStart(e) {
+    state.isDragging = true;
+    sticker.style.transition = "none";
+
+    const transform = new DOMMatrix(window.getComputedStyle(sticker).transform);
+    initialDragX =
+      (e.type === "touchstart" ? e.touches[0].clientX : e.clientX) -
+      transform.m41;
+    initialDragY =
+      (e.type === "touchstart" ? e.touches[0].clientY : e.clientY) -
+      transform.m42;
+
+    sticker.style.zIndex = "1000";
+  }
+
+  function drag(e) {
+    if (state.isDragging) {
+      e.preventDefault();
+
+      const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
+      const clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
+
+      state.currentX = clientX - initialDragX;
+      state.currentY = clientY - initialDragY;
+
+      sticker.style.transform = `
+                translate(${state.currentX}px, ${state.currentY}px)
+                rotate(${state.rotation}deg)
+            `;
+    }
+  }
+
+  function dragEnd() {
+    if (state.isDragging) {
+      state.isDragging = false;
+      sticker.style.zIndex = "";
+      state.initialX = state.currentX;
+      state.initialY = state.currentY;
+
+      // Resume random movement after drag
+      setTimeout(
+        () => animateSticker(sticker),
+        random(config.minInterval, config.maxInterval)
+      );
+    }
+  }
+
+  // Add event listeners
+  sticker.addEventListener("mousedown", dragStart);
+  sticker.addEventListener("touchstart", dragStart);
+  document.addEventListener("mousemove", drag);
+  document.addEventListener("touchmove", drag);
+  document.addEventListener("mouseup", dragEnd);
+  document.addEventListener("touchend", dragEnd);
+});
+
+// Start initial animations with slight delays
+stickers.forEach((sticker, index) => {
+  setTimeout(() => {
+    animateSticker(sticker);
+  }, index * 200); // Stagger the start of animations
+});
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    stickers.forEach((sticker) => {
+      const state = stickerStates.get(sticker);
+      state.initialX = state.currentX;
+      state.initialY = state.currentY;
+    });
+  }, 250);
+});
+
 //Company Logo Slider
-document.addEventListener( "DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const mediaQuery = window.matchMedia("(min-width: 768px)");
   const slideTrack = document.querySelector(".logo-slide-track");
 
