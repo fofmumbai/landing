@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Redirect to main page after video ends
   promoVideo.addEventListener("ended", () => {
-    window.location.href = "home.html";
+    window.location.href = "home";
   });
 
 });
