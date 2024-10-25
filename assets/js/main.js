@@ -282,27 +282,27 @@ function scrollTop() {
 window.addEventListener("scroll", scrollTop);
 
 /*==================== SCROLL REVEAL ANIMATION ====================*/
-const sr = ScrollReveal({
-  distance: "30px",
-  duration: 1800,
-  reset: true,
-});
+// const sr = ScrollReveal({
+//   distance: "30px",
+//   duration: 1800,
+//   reset: true,
+// });
 
-sr.reveal(
-  `.firstfold__data, .firstfold__img,
-           .thirdfold__data,
-           .fourthfold__content,
-           .footer__content`,
-  {
-    origin: "top",
-    interval: 200,
-  }
-);
+// sr.reveal(
+//   `.firstfold__data, .firstfold__img,
+//            .thirdfold__data,
+//            .fourthfold__content,
+//            .footer__content`,
+//   {
+//     origin: "top",
+//     interval: 200,
+//   }
+// );
 
-sr.reveal(`.secondfold__img, .home__img, .fifthfold__content`, {
-  origin: "left",
-});
+// sr.reveal(`.secondfold__img, .home__img, .fifthfold__content`, {
+//   origin: "left",
+// });
 
-sr.reveal(`.secondfold__data, home__data, .fifthfold__img`, {
-  origin: "right",
-});
+// sr.reveal(`.secondfold__data, home__data, .fifthfold__img`, {
+//   origin: "right",
+// });
