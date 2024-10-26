@@ -185,6 +185,10 @@ img {
   font-weight: var(--font-semi-bold);
 }
 
+.nav__logo {
+  margin-left: -0.5rem;
+}
+
 .nav__logo:hover {
   color: var(--first-color);
 }
@@ -200,6 +204,7 @@ img {
 .nav__toggle {
   font-size: 1.3rem;
   cursor: pointer;
+  margin-top: 0.25rem;
 }
 
 /* Show menu */
@@ -339,8 +344,8 @@ img {
   border: 2px solid #000;
   color: #fff;
   font-size: 1.2rem;
-  border-radius: .75rem;
-  padding: .9rem 2rem;
+  border-radius: 0.75rem;
+  padding: 0.9rem 2rem;
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -352,7 +357,7 @@ img {
 
 .arrow-icon {
   position: absolute;
-  left: .75rem;
+  left: 0.75rem;
   transform: translateX(-30px);
   opacity: 0;
   transition: all 0.3s ease;
@@ -411,6 +416,12 @@ img {
   top: 20rem;
   right: 5rem;
   width: 130px;
+}
+
+.sticker5 {
+  top: 32rem;
+  left: 11rem;
+  width: 200px;
 }
 
 .logo-slider {
@@ -808,14 +819,13 @@ body.modal-open {
   border-radius: 0.5rem;
 }
 
-
 .fifthfold__img {
   width: 280px;
   justify-self: center;
 }
 
 .fifthfold__img img {
-  border-radius: .75rem;
+  border-radius: 0.75rem;
 }
 
 /*========== FOOTER ==========*/
@@ -917,11 +927,7 @@ body.modal-open {
   .home__img {
     order: -1;
   }
-
 }
-
-
-
 
 @media screen and (min-width: 768px) {
   body {
@@ -957,26 +963,32 @@ body.modal-open {
 
   .sticker1 {
     width: 200px;
-    top: 15%;
-    left: 10%;
+    top: 20rem;
+    left: 10rem;
   }
 
   .sticker2 {
-    top: 75%;
-    left: 20%;
+    top: 35rem;
+    left: 17rem;
     width: 250px;
   }
 
   .sticker3 {
-    top: 15%;
-    right: 20%;
+    top: 8rem;
+    right: 20rem;
     width: 200px;
   }
 
   .sticker4 {
-    top: 65%;
-    right: 35%;
+    top: 31rem;
+    right: 30rem;
     width: 165px;
+  }
+
+  .sticker5 {
+    top: 5rem;
+    left: 25rem;
+    width: 252px;
   }
 
   .firstfold__container {

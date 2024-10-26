@@ -4,7 +4,7 @@ const stickers = document.querySelectorAll("#sticker");
 // Configuration for random movement
 const config = {
   minRadius: 20, // Minimum movement radius
-  maxRadius: 100, // Maximum movement radius
+  maxRadius: 120, // Maximum movement radius
   minDuration: 2, // Minimum animation duration in seconds
   maxDuration: 5, // Maximum animation duration in seconds
   minInterval: 1000, // Minimum time between movements (ms)
