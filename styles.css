@@ -290,7 +290,7 @@ button{
   animation: pulse 2s 6s infinite;
   border-radius: 100%;
   position: absolute;
-  bottom: 10%;
+  bottom: 5rem;
 }
 
 @keyframes pulse {
