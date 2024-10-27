@@ -103,67 +103,6 @@ function animateSticker(sticker) {
   }
 }
 
-// Initialize dragging functionality
-// stickers.forEach((sticker) => {
-//   const state = stickerStates.get(sticker);
-//   let initialDragX, initialDragY;
-
-//   function dragStart(e) {
-//     state.isDragging = true;
-//     sticker.style.transition = "none";
-
-//     const transform = new DOMMatrix(window.getComputedStyle(sticker).transform);
-//     initialDragX =
-//       (e.type === "touchstart" ? e.touches[0].clientX : e.clientX) -
-//       transform.m41;
-//     initialDragY =
-//       (e.type === "touchstart" ? e.touches[0].clientY : e.clientY) -
-//       transform.m42;
-
-//     sticker.style.zIndex = "1000";
-//   }
-
-//   function drag(e) {
-//     if (state.isDragging) {
-//       e.preventDefault();
-
-//       const clientX = e.type === "touchmove" ? e.touches[0].clientX : e.clientX;
-//       const clientY = e.type === "touchmove" ? e.touches[0].clientY : e.clientY;
-
-//       state.currentX = clientX - initialDragX;
-//       state.currentY = clientY - initialDragY;
-
-//       sticker.style.transform = `
-//                 translate(${state.currentX}px, ${state.currentY}px)
-//                 rotate(${state.rotation}deg)
-//             `;
-//     }
-//   }
-
-//   function dragEnd() {
-//     if (state.isDragging) {
-//       state.isDragging = false;
-//       sticker.style.zIndex = "";
-//       state.initialX = state.currentX;
-//       state.initialY = state.currentY;
-
-//       // Resume random movement after drag
-//       setTimeout(
-//         () => animateSticker(sticker),
-//         random(config.minInterval, config.maxInterval)
-//       );
-//     }
-//   }
-
-//   // Add event listeners
-//   sticker.addEventListener("mousedown", dragStart);
-//   sticker.addEventListener("touchstart", dragStart);
-//   document.addEventListener("mousemove", drag);
-//   document.addEventListener("touchmove", drag);
-//   document.addEventListener("mouseup", dragEnd);
-//   document.addEventListener("touchend", dragEnd);
-// });
-
 // Start initial animations with slight delays
 stickers.forEach((sticker, index) => {
   setTimeout(() => {
@@ -206,44 +145,6 @@ document.addEventListener("DOMContentLoaded", function () {
   // Listen for changes
   mediaQuery.addListener(handleScreenChange);
 });
-
-// Interact.js functionality
-// interact("#sticker")
-//   .draggable({
-//     // Enable drag and drop
-//     listeners: {
-//       move(event) {
-//         const target = event.target;
-//         const x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-//         const y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
-//         target.style.transform = `translate(${x}px, ${y}px)`;
-//         target.setAttribute("data-x", x);
-//         target.setAttribute("data-y", y);
-//       },
-//     },
-//   })
-//   .gesturable({
-//     listeners: {
-//       move(event) {
-//         const target = event.target;
-//         const currentScale = parseFloat(target.getAttribute("data-scale")) || 1;
-//         const currentRotation =
-//           parseFloat(target.getAttribute("data-rotation")) || 0;
-
-//         const newScale = currentScale * (1 + event.ds);
-//         const newRotation = currentRotation + event.da;
-
-//         target.style.transform = `translate(${target.getAttribute(
-//           "data-x"
-//         )}px, ${target.getAttribute(
-//           "data-y"
-//         )}px) scale(${newScale}) rotate(${newRotation}deg)`;
-//         target.setAttribute("data-scale", newScale);
-//         target.setAttribute("data-rotation", newRotation);
-//       },
-//     },
-//   });
 
 // Modal functionality
 function createModal() {

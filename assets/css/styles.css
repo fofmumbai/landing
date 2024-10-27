@@ -391,7 +391,6 @@ img {
   z-index: 1;
   touch-action: none;
   user-select: none;
-  cursor: move;
 }
 
 .sticker1 {
@@ -408,7 +407,7 @@ img {
 
 .sticker3 {
   top: 3.3rem;
-  right: 5rem;
+  right: 0rem;
   width: 150px;
 }
 
@@ -514,7 +513,7 @@ img {
   color: #000;
   padding: 2rem;
   font-family: system-ui, -apple-system, sans-serif;
-  margin: 4rem auto;
+  margin: 2rem auto;
 }
 
 .stats-title {
@@ -789,6 +788,7 @@ body.modal-open {
 /*========== Fifth fold ==========*/
 .fifthfold {
   background-color: #fff;
+  margin-top: 3rem;
 }
 
 .fifthfold__content {
