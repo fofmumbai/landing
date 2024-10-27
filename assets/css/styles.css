@@ -858,14 +858,18 @@ body.modal-open {
   rotate: -45deg;
 }
 
-.album__button{
+.album__button, .home__button__2{
   background-color: #fff;
   border: 2px solid #000;
   color: #000;
 }
 
-.album__button:hover{
+.album__button:hover, .home__button__2:hover{
   background-color: #fff;
+}
+
+.home__button__2{
+  padding: 0 1.1rem;
 }
 
 /*========== FOOTER ==========*/
