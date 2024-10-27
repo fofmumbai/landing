@@ -368,18 +368,20 @@ button{
   position: absolute;
   bottom: 40px;
   left: 40px;
-  border-radius: 25px;
+  border-radius: .75rem;
   color: #fff;
   border: none;
   width: 100px;
   height: 50px;
   cursor: pointer ;
   animation: slideup 5s;
-  background-color: blue;
+  background-color: #000;
 }
 
 .mute-button:hover {
-  background: rgba(0, 0, 255, 0.687);
+  background: #000;
+  border-radius: 0;
+  transition: .3s ease;
 }
 
 .mute-button svg {
@@ -392,7 +394,7 @@ button{
   position: absolute;
   bottom: 40px;
   right: 40px;
-  border-radius: 25px;
+  border-radius: .75rem;
   color: #fff;
   font-size: 1rem;
   border: none;
@@ -400,11 +402,13 @@ button{
   height: 50px;
   cursor: pointer ;
   animation: slideup 5s;
-  background-color: blue;
+  background-color: #000;
 }
 
 .skip-button:hover {
-  background: rgba(0, 0, 255, 0.687);
+  background: #000;
+  border-radius: 0;
+  transition: .3s ease;
 }
 
 @media screen and (max-width: 1024px){
