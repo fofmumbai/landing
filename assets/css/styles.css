@@ -266,7 +266,7 @@ img {
 /*========== First Fold ==========*/
 
 .firstfold {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .firstfold__container {
@@ -576,7 +576,7 @@ img {
 
 /*========== Third fold ==========*/
 .thirdfold__container {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
 
 .thirdfold__data {
@@ -713,7 +713,7 @@ img {
   color: var(--first-color);
   text-decoration: none;
   border-radius: 0.5rem;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--mb-1);
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -858,14 +858,13 @@ body.modal-open {
   rotate: -45deg;
 }
 
-.home__button__2{
-  padding: 0 1rem;
+.album__button{
   background-color: #fff;
   border: 2px solid #000;
   color: #000;
 }
 
-.home__button__2:hover{
+.album__button:hover{
   background-color: #fff;
 }
 
@@ -1083,6 +1082,10 @@ body.modal-open {
     background-color: var(--first-color-fifthfold);
     padding: 2rem;
     border-radius: 1.5rem;
+  }
+
+  .networking__grid{
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
