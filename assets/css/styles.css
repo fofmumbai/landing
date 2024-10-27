@@ -1087,6 +1087,7 @@ body.modal-open {
 
   .fourthfold__img {
     width: 200px;
+    height: auto;
     margin-bottom: var(--mb-1);
     margin-top: 0.75rem;
   }
