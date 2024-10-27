@@ -752,7 +752,8 @@ body.modal-open {
 }
 
 .fourthfold__img {
-  width: 110px;
+  width: 150px;
+  height: 150px;
   justify-self: center;
   margin-bottom: 0.25rem;
   margin-top: 0.5rem;
