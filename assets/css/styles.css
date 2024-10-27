@@ -490,7 +490,7 @@ img {
 /* Mobile styles */
 @media screen and (max-width: 767px) {
   .logo-slide-track {
-    animation: marquee 55s linear infinite;
+    animation: marquee 25s linear infinite;
   }
 
   @keyframes marquee {
