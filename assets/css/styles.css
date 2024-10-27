@@ -468,7 +468,7 @@ img {
 .company-logo img {
   height: 30px;
   width: auto;
-  opacity: .7;
+  opacity: 0.7;
 }
 
 /* Desktop styles */
@@ -738,6 +738,7 @@ body.modal-open {
 .fourthfold__container {
   grid-template-columns: repeat(2, 1fr);
   padding-bottom: 2rem;
+  gap: 1rem;
 }
 
 .fourthfold__content {
@@ -745,18 +746,18 @@ body.modal-open {
   display: grid;
   padding: 0.25rem 0.75rem 0.75rem;
   background-color: var(--container-color);
-  box-shadow: 0 2px 6px rgba(65, 11, 16, 0.15);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
-}
-
-.fourthfold__content:hover {
-  box-shadow: 0 3px 12px rgba(65, 11, 16, 0.15);
+  border: 1px solid #a2a2a2;
 }
 
 .fourthfold__img {
   width: 110px;
   justify-self: center;
   margin-bottom: 0.25rem;
+  margin-top: 0.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid #a2a2a2;
 }
 
 .fourthfold__title,
@@ -766,6 +767,13 @@ body.modal-open {
 
 .fourthfold__title {
   font-size: var(--normal-font-size);
+  font-weight: 400;
+}
+
+.fourthfold__heading{
+  font-size: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 
 .fourthfold__category {
@@ -787,6 +795,12 @@ body.modal-open {
   font-size: 1.25rem;
   padding: 0.5rem 0.625rem;
   border-radius: 1rem 0 1rem 0;
+  background-color: #000;
+}
+
+.fourthfold__button:hover {
+  background-color: #000;
+  border-radius: 0 0 1rem 0;
 }
 
 /*========== Fifth fold ==========*/
@@ -804,7 +818,7 @@ body.modal-open {
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: .75rem;
+  margin-bottom: 0.75rem;
 }
 
 .fifthfold__title,
@@ -817,8 +831,8 @@ body.modal-open {
   margin-bottom: 1rem;
 }
 
-.fifthfold__title{
-  margin-bottom: .75rem;
+.fifthfold__title {
+  margin-bottom: 0.75rem;
 }
 
 .fifthfold__direction {
@@ -839,35 +853,37 @@ body.modal-open {
   border: 1px solid #a2a2a2;
 }
 
-.upcoming__tag{
+.upcoming__tag {
   width: 110px;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
-.fifthfold__button{
+.fifthfold__button {
   margin-top: 0rem;
 }
 
-.two__buttons{
+.two__buttons {
   display: flex;
   justify-content: space-around;
 }
 
-.button_arrow{
+.button_arrow {
   rotate: -45deg;
 }
 
-.album__button, .home__button__2{
+.album__button,
+.home__button__2 {
   background-color: #fff;
   border: 2px solid #000;
   color: #000;
 }
 
-.album__button:hover, .home__button__2:hover{
+.album__button:hover,
+.home__button__2:hover {
   background-color: #fff;
 }
 
-.home__button__2{
+.home__button__2 {
   padding: 0 1.1rem;
 }
 
@@ -949,11 +965,11 @@ body.modal-open {
     text-align: left;
   }
 
-  .two__buttons{
+  .two__buttons {
     justify-content: flex-start;
   }
 
-  .home__button__2{
+  .home__button__2 {
     margin-left: 2rem;
   }
 
@@ -977,6 +993,11 @@ body.modal-open {
 
   .home__img {
     order: -1;
+  }
+
+  .fourthfold__container {
+    grid-template-columns: repeat(3, 250px);
+    justify-content: center;
   }
 }
 
@@ -1055,7 +1076,7 @@ body.modal-open {
   }
 
   .fourthfold__container {
-    grid-template-columns: repeat(3, 224px);
+    grid-template-columns: repeat(3, 220px);
     justify-content: center;
   }
 
@@ -1064,8 +1085,9 @@ body.modal-open {
   }
 
   .fourthfold__img {
-    width: 120px;
+    width: 200px;
     margin-bottom: var(--mb-1);
+    margin-top: 0.75rem;
   }
 
   .fourthfold__title,
@@ -1087,7 +1109,7 @@ body.modal-open {
     border-radius: 1.5rem;
   }
 
-  .networking__grid{
+  .networking__grid {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -1110,6 +1132,12 @@ body.modal-open {
   .home__container,
   .fifthfold__container {
     column-gap: 5rem;
+  }
+
+  .fourthfold__container {
+    grid-template-columns: repeat(4, 220px);
+    justify-content: center;
+    gap: 2rem;
   }
 }
 
