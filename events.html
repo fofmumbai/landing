@@ -15,7 +15,7 @@
 	<!--========== CSS ==========-->
 	<link rel="stylesheet" href="assets/css/styles.css">
 
-	<title>Events | Friends Of Figma, Mumbai</title>
+	<title>Events Archive | Friends Of Figma, Mumbai</title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
 	<div style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
 		<header class="l-header" id="header">
 			<nav class="nav bd-container">
-				<a href="#" class="nav__logo"
+				<a href="home" class="nav__logo"
 					style="display: flex; align-items: center; justify-content: space-between;"><img
 						src="assets/img/foflogo.svg" style="width: 2rem; margin-right: .25rem;" /></a>
 
@@ -50,16 +50,38 @@
 	</div>
 
 	<main class="l-main">
+		<!--========== First Fold ==========-->
+		<section class="firstfold" id="firstfold">
+			<div class="firstfold__container bd-container bd-grid">
+				<div class="firstfold__img">
+					<img src="assets/img/mock1.png" alt="">
+				</div>
+
+				<div class="firstfold__data">
+					<h1 class="firstfold__title" style="font-size: 2.5rem; font-weight: 400; margin-top: 1.5rem;">Event Archive</h1>
+					<p class="firstfold__description">Discover all events, each uniquely crafted to celebrate design, learning, and Mumbai's
+					creative pulse that brings the community together.</p>
+					<div style="display: flex; align-items: center; justify-content: space-between;">
+						<a href="https://friends.figma.com/mumbai" class="button home__button" style="margin-top: 0;" target="_blank">
+							<svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+								stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<line x1="5" y1="12" x2="19" y2="12"></line>
+								<polyline points="12 5 19 12 12 19"></polyline>
+							</svg>
+							<span>Join FOF Mumbai</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<!--========== Fourth Fold ==========-->
 		<section class="fourthfold section bd-container" id="fourthfold">
-			<h2 class="section-title fourthfold__heading">Events By FOF</h2>
-
 			<div class="fourthfold__container bd-grid">
-				<a href="#" class="fourthfold__content">
+				<a href="events/wireframed24.html" class="fourthfold__content">
 					<img src="events/eventassets/wrfrmd.png" alt="" class="fourthfold__img">
-					<h3 class="fourthfold__title">Card description</h3>
-					<span class="fourthfold__category">fourthfold</span>
+					<h3 class="fourthfold__title">Wireframed 2024</h3>
+					<span class="fourthfold__category">In-person</span>
 					<!-- <span class="fourthfold__preci">$2.52</span> -->
 					<span class="button fourthfold__button"><i class='bx bx-right-arrow-alt'></i></span>
 				</a>

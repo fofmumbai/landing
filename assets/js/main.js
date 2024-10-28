@@ -144,6 +144,73 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Listen for changes
   mediaQuery.addListener(handleScreenChange);
+} );
+
+//IMAGE SLIDER
+
+document.addEventListener("DOMContentLoaded", function () {
+  // Function to check if element is in viewport
+  function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <=
+        (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+  }
+
+  // Get all sliders
+  const sliders = document.querySelectorAll(".slider");
+
+  // Pause animations when not in viewport to improve performance
+  function handleVisibility() {
+    sliders.forEach((slider) => {
+      const track = slider.querySelector(".slide-track");
+      if (isInViewport(slider)) {
+        track.style.animationPlayState = "running";
+      } else {
+        track.style.animationPlayState = "paused";
+      }
+    });
+  }
+
+  // Add scroll event listener
+  window.addEventListener("scroll", handleVisibility);
+
+  // Initial check
+  handleVisibility();
+
+  // Handle window resize
+  let resizeTimeout;
+  window.addEventListener("resize", function () {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(handleVisibility, 250);
+  });
+
+  // Optional: Add touch event handlers for mobile
+  sliders.forEach((slider) => {
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener("touchstart", (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    slider.addEventListener("touchend", (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const track = slider.querySelector(".slide-track");
+
+      // If significant horizontal swipe detected, pause animation briefly
+      if (Math.abs(touchEndX - touchStartX) > 50) {
+        track.style.animationPlayState = "paused";
+        setTimeout(() => {
+          track.style.animationPlayState = "running";
+        }, 1000);
+      }
+    });
+  });
 });
 
 // Modal functionality
