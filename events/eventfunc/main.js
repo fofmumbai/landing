@@ -1,3 +1,34 @@
+const slider = document.getElementById("slider");
+const slideWidth = document.querySelector(".slide").offsetWidth + 10; // Add gap spacing
+
+function nextSlide() {
+  slider.scrollBy({ left: slideWidth, behavior: "smooth" });
+}
+
+function prevSlide() {
+  slider.scrollBy({ left: -slideWidth, behavior: "smooth" });
+}
+
+// Swipe functionality
+let startX = 0;
+
+slider.addEventListener("touchstart", (e) => {
+  startX = e.touches[0].clientX;
+});
+
+slider.addEventListener("touchmove", (e) => {
+  const touch = e.touches[0];
+  const diff = startX - touch.clientX;
+
+  if (diff > 50) {
+    nextSlide();
+    startX = touch.clientX; // Reset startX for continuous swiping
+  } else if (diff < -50) {
+    prevSlide();
+    startX = touch.clientX;
+  }
+});
+
 // Modal functionality
 function createModal() {
   // Create modal HTML structure
@@ -221,4 +252,3 @@ function scrollTop() {
   else scrollTop.classList.remove("show-scroll");
 }
 window.addEventListener("scroll", scrollTop);
-
