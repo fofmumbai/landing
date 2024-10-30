@@ -13,138 +13,10 @@
 
 	<!--========== CSS ==========-->
 	<link rel="stylesheet" href="assets/css/styles.css">
+	<link rel="stylesheet" href="assets/css/about.css">
 
 	<title>About | Friends Of Figma, Mumbai</title>
 
-	<style>
-		.member__count {
-			text-align: center;
-			 width: 200px;
-  height: 100px;
-  position: fixed; /* Keeps the element fixed relative to the viewport */
-  bottom: 20px; /* Distance from the bottom */
-  left: 50%; /* Position from the left */
-  transform: translateX(-50%); /* Centers it horizontally */
-  background-color: #fff;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for depth */
-  z-index: 1000; /* Ensures it stays above other elements */
-  animation: appear 5s linear;
-		}
-		/* Sticky class to attach to the top */
-		.sticky {
-			position: fixed;
-			top: 0;
-			width: 100%;
-			z-index: 100;
-			background-color: #fff;
-		}
-
-
-.container {
-   width: 80%;
-   padding: 50px 0;
-   margin: 50px auto;
-   position: relative;
-   overflow: hidden;
-}
-
-.container:before {
-   content: '';
-   position: absolute;
-   top: 0;
-   left: 50%;
-   margin-left: -1px;
-   width: 2px;
-   height: 100%;
-   background: #CCD1D9;
-   z-index: 1
-}
-
-.timeline-block {
-   width: -webkit-calc(50% + 8px);
-   width: -moz-calc(50% + 8px);
-   width: calc(50% + 8px);
-   display: -webkit-box;
-   display: -webkit-flex;
-   display: -moz-box;
-   display: flex;
-   -webkit-box-pack: justify;
-   -webkit-justify-content: space-between;
-   -moz-box-pack: justify;
-   justify-content: space-between;
-   clear: both;
-}
-
-.timeline-block-right {
-   float: right;
-}
-
-.timeline-block-left {
-   float: left;
-   direction: rtl
-}
-
-.marker {
-   width: 16px;
-   height: 16px;
-   border-radius: 50%;
-   border: 2px solid #F5F7FA;
-   background: #4FC1E9;
-   margin-top: 10px;
-   z-index: 1;
-}
-
-.timeline-content {
-   width: 95%;
-   padding: 0 15px;
-   color: #666
-}
-
-.timeline-content h3 {
-   margin-top: 5px;
-   margin-bottom: 5px;
-   font-size: 25px;
-   font-weight: 500
-}
-
-.timeline-content span {
-   font-size: 15px;
-   color: #a4a4a4;
-}
-
-.timeline-content p {
-   font-size: 14px;
-   line-height: 1.5em;
-   word-spacing: 1px;
-   color: #888;
-}
-
-
-@media screen and (max-width: 768px) {
-   .container:before {
-      left: 8px;
-      width: 2px;
-   }
-   .timeline-block {
-      width: 100%;
-      margin-bottom: 30px;
-   }
-   .timeline-block-right {
-      float: none;
-   }
-
-   .timeline-block-left {
-      float: none;
-      direction: ltr;
-   }
-}
-
-
-	</style>
 </head>
 
 <body>
@@ -162,7 +34,7 @@
 				</a>
 				<div class="nav__menu" id="nav-menu">
 					<ul class="nav__list">
-						<li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+						<li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
 						<li class="nav__item"><a href="#firstfold" class="nav__link">Firstfold</a></li>
 						<li class="nav__item"><a href="#secondfold" class="nav__link">Secondfold</a></li>
 						<li class="nav__item"><a href="#thirdfold" class="nav__link">Thirdfold</a></li>
@@ -193,13 +65,146 @@
 				<div class="journey__data" style="text-align: center;">
 					<h1 class="journey__title">Look at our journey</h1>
 				</div>
-				<div>
-					<h1 class="member__count" id="memberCount" style="text-align: center;">210 members</h1>
+				<div style="display: flex;">
+					<h1 class="member__count" id="memberCount" style="text-align: center;">0 members </h1>
 				</div>
 			</div>
 		</section>
 
 		<div class="container">
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<img src="assets/img/foflogo.svg" alt="" class="timeline-logo">
+					<h3>First Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Seconed Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Third Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fourth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fifth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fifth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>First Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Seconed Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Third Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fourth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-right">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fifth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
+
+			<div class="timeline-block timeline-block-left">
+				<div class="marker"></div>
+				<div class="timeline-content">
+					<h3>Fifth Year</h3>
+					<span>Some work experience</span>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+						ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate.</p>
+				</div>
+			</div>
 
 			<div class="timeline-block timeline-block-right">
 				<div class="marker"></div>
@@ -314,26 +319,31 @@
 
 	<script>
 		const memberCountElement = document.getElementById( 'memberCount' );
-		const maxCount = 1600;
-		const initialCount = 210; // Start count from 210 members
-		const countRange = maxCount - initialCount;
-		const scrollHeight = document.documentElement.scrollHeight;
-		const clientHeight = document.documentElement.clientHeight;
+			const maxCount = 1700;
+			const initialCount = 0;
+			const countRange = maxCount - initialCount;
 
-		// Track scroll and make member count sticky
-		window.addEventListener( 'scroll', () => {
-			const scrollPercent = window.scrollY / ( scrollHeight - clientHeight );
-			const count = Math.round( initialCount + scrollPercent * countRange );
-			memberCountElement.textContent = `${count} members`;
+			// Track scroll and make member count sticky
+			window.addEventListener( 'scroll', () => {
+				const footer = document.querySelector( '.footer' );
+				const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+				const journeySection = document.getElementById( 'journey' );
+				const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
 
-			// Check if we've scrolled to the member count
-			const rect = memberCountElement.getBoundingClientRect();
-			if ( rect.top <= 0 ) {
-				memberCountElement.classList.add( 'sticky' );
-			} else {
-				memberCountElement.classList.remove( 'sticky' );
-			}
-		} );
+				// Calculate scroll percentage based on distance between journey start and footer
+				const scrollableDistance = footerTop - journeyTop;
+				const scrolled = window.scrollY - journeyTop;
+				const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
+
+				// Calculate count based on scroll percentage
+				const count = Math.round( initialCount + scrollPercent * countRange );
+				memberCountElement.textContent = `${count} members`;
+
+				// Force max count when near footer
+				if ( footer.getBoundingClientRect().top <= window.innerHeight ) {
+					memberCountElement.textContent = `${maxCount} members`;
+				}
+			} );
 	</script>
 </body>
 </html>
