@@ -889,7 +889,6 @@ body.modal-open {
 }
 
 /* ====== IMAGE SLIDER======= */
-
 .slider-section {
   width: 100%;
   padding: 3.5rem 0 0 0;
@@ -909,14 +908,17 @@ body.modal-open {
 
 .slide-track {
   display: flex;
-  width: calc(
-    250px * 16
-  ); /* Adjust based on slide width and number of slides */
-  animation: scroll 10s linear infinite;
+  width: calc(300px * 12);
 }
 
+/* Left slider animation */
+.slider-left .slide-track {
+  animation: scroll-left 20s linear infinite;
+}
+
+/* Right slider animation */
 .slider-right .slide-track {
-  animation-direction: reverse;
+  animation: scroll-right 20s linear infinite;
 }
 
 .slide {
@@ -945,21 +947,24 @@ body.modal-open {
   font-family: "caveat", sans-serif;
 }
 
-@keyframes scroll {
+@keyframes scroll-left {
   0% {
     transform: translateX(0);
   }
   100% {
-    transform: translateX(calc(-150px * 4)); /* Half of the total width */
+    transform: translateX(calc(-300px * 6));
   }
 }
 
-/* Pause animation on hover */
-/* .slider:hover .slide-track {
-  animation-play-state: paused;
-} */
+@keyframes scroll-right {
+  0% {
+    transform: translateX(calc(-300px * 6));
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .slide {
     width: 250px;
