@@ -45,7 +45,6 @@ function createModal() {
           <div class="modal-social-links"></div>
           <div class="modal-redirect-links"></div>
           <button class="modal-btn"></button>
-
         </div>
       </div>
     </div>
