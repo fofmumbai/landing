@@ -1072,15 +1072,15 @@ body.modal-open {
 }
 
 .footer__description {
-  color: #fff;
+  color: #397eff;
   font-weight: 300;
   font-size: 1rem;
 }
 
 .footer__title {
   margin-bottom: var(--mb-2);
-  font-weight: 500;
-  font-size: 1.2rem;
+  font-weight: 600;
+  font-size: 1.3rem;
 }
 
 .footer__logo,
@@ -1091,13 +1091,13 @@ body.modal-open {
 .footer__link {
   display: inline-block;
   margin-bottom: 0.75rem;
-  color: #fff;
+  color: #c5c5c5;
   font-weight: 300;
   font-size: 1rem;
 }
 
 .footer__link:hover {
-  color: var(--first-color);
+  color: #397eff;
 }
 
 .footer__social {
@@ -1107,7 +1107,7 @@ body.modal-open {
 }
 
 .footer__social:hover {
-  color: var(--first-color);
+  color: #397eff;
 }
 
 .footer__title {

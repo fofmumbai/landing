@@ -121,3 +121,31 @@
     direction: ltr;
   }
 }
+
+.modal-redirect-link{
+  color: #0066d3;
+  text-decoration: none;
+}
+
+.modal-title{
+  margin-top: -.5rem;
+}
+
+.modal-description{
+  font-size: 1rem;
+  font-weight: 400;
+  color: #9d9b9b;
+}
+
+.custom-section p{
+  color: rgb(126, 126, 126);
+}
+
+.modal-img{
+  width: 60px;
+  border-radius: .75rem;
+}
+
+.thirdfold__img{
+  width: 130px;
+}
