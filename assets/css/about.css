@@ -1,4 +1,4 @@
-.button-link{
+.button-link {
   font-weight: 400;
 }
 
@@ -22,7 +22,6 @@
   color: #fff;
   font-weight: 500;
 }
-
 
 .container {
   width: 80%;
@@ -103,6 +102,13 @@
   color: #888;
 }
 
+.community-text {
+  color: #2b90f6;
+  line-height: 1;
+  font-family: "caveat";
+  font-size: 4.5rem;
+}
+
 @media screen and (max-width: 768px) {
   .container:before {
     left: 8px;
@@ -122,30 +128,99 @@
   }
 }
 
-.modal-redirect-link{
+.modal-redirect-link {
   color: #0066d3;
   text-decoration: none;
 }
 
-.modal-title{
-  margin-top: -.5rem;
+.modal-title {
+  margin-top: -0.5rem;
 }
 
-.modal-description{
+.modal-description {
   font-size: 1rem;
   font-weight: 400;
   color: #9d9b9b;
 }
 
-.custom-section p{
+.custom-section p {
   color: rgb(126, 126, 126);
 }
 
-.modal-img{
+.modal-img {
   width: 75px;
-  border-radius: .75rem;
+  border-radius: 0.75rem;
 }
 
-.thirdfold__img{
+.thirdfold__img {
   width: 150px;
+}
+
+#about-image {
+  position: absolute;
+  z-index: -1;
+  touch-action: none;
+  user-select: none;
+}
+
+.sticker1 {
+  width: 140px;
+  top: 3rem;
+  left: 1rem;
+}
+
+.sticker2 {
+  top: 29rem;
+  left: 2rem;
+  width: 130px;
+}
+
+.sticker3 {
+  top: 15rem;
+  right: 1rem;
+  width: 130px;
+}
+
+.sticker4 {
+  top: 38rem;
+  right: 1rem;
+  width: 130px;
+}
+
+/*========== MEDIA QUERIES ==========*/
+
+/* For full-screen images on small screens */
+@media screen and (max-width: 359px) {
+}
+
+@media screen and (min-width: 576px) {
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 968px) {
+  .sticker1 {
+    width: 275px;
+    top: 3rem;
+    left: 15rem;
+  }
+
+  .sticker2 {
+    top: 29rem;
+    left: 7rem;
+    width: 275px;
+  }
+
+  .sticker3 {
+    top: 15rem;
+    right: 10rem;
+    width: 275px;
+  }
+
+  .sticker4 {
+    top: 35rem;
+    right: 5rem;
+    width: 275px;
+  }
 }
