@@ -804,6 +804,11 @@ body.modal-open {
   border-radius: 0 0 1rem 0;
 }
 
+.contact__span{
+  font-size: .8rem;
+  font-weight: 500;
+}
+
 /*========== Fifth fold ==========*/
 .fifthfold {
   background-color: #fff;
