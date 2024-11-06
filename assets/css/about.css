@@ -11,7 +11,7 @@
   bottom: 4rem;
   left: 50%;
   transform: translateX(-50%);
-  background-color: blue;
+  background-color: #2a18ef;
   border-radius: 5rem;
   display: flex;
   align-items: center;
@@ -72,7 +72,7 @@
   height: 16px;
   border-radius: 50%;
   border: 2px solid #f5f7fa;
-  background: blue;
+  background: #2a18ef;
   margin-top: 10px;
   z-index: 1;
 }
