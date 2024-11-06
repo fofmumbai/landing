@@ -224,3 +224,11 @@
     width: 275px;
   }
 }
+
+.modal-redirect-links:hover{
+  cursor: pointer;
+}
+
+..modal-social-links{
+  cursor: pointer;
+}
