@@ -195,7 +195,6 @@ img {
 
 .nav__link {
   transition: 0.3s;
-  padding: .5rem;
 }
 
 .nav__link:hover {
