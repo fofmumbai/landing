@@ -154,7 +154,10 @@ function createModal() {
       <div class="modal">
         <button class="modal-close">&times;</button>
         <div class="modal-content">
-          <img src="" alt="" class="modal-img">
+          <div class="modal-img-container">
+            <img src="" alt="" class="modal-img">
+            <div class="modal-img-loader" style="display: none;">Loading...</div>
+          </div>
           </br>
           <h3 class="modal-title"></h3>
           <div class="modal-description"></div>
@@ -175,6 +178,7 @@ function createModal() {
   const modal = document.querySelector(".modal");
   const modalClose = document.querySelector(".modal-close");
   const modalImg = document.querySelector(".modal-img");
+  const modalImgLoader = document.querySelector(".modal-img-loader");
   const modalTitle = document.querySelector(".modal-title");
   const modalDescription = document.querySelector(".modal-description");
   const modalSocialLinks = document.querySelector(".modal-social-links");
@@ -182,16 +186,45 @@ function createModal() {
   const modalBtn = document.querySelector(".modal-btn");
   const modalCustomContent = document.querySelector(".modal-custom-content");
 
+  // Function to preload image
+  function preloadImage(url) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(url);
+      img.onerror = () => reject(new Error(`Failed to load image: ${url}`));
+      img.src = url;
+    });
+  }
+
   // Function to open modal
-  function openModal(cardData) {
-    // Set modal content based on cardData
+  async function openModal(cardData) {
+    // Show modal with loading state
+    modalBackdrop.style.display = "block";
+    modal.style.display = "block";
+    document.body.classList.add("modal-open");
+
+    // Handle image loading
     if (cardData.image) {
-      modalImg.src = cardData.image;
-      modalImg.style.display = "block";
+      modalImg.style.opacity = "0";
+      modalImgLoader.style.display = "block";
+
+      try {
+        await preloadImage(cardData.image);
+        modalImg.src = cardData.image;
+        modalImg.style.display = "block";
+        modalImg.style.opacity = "1";
+        modalImgLoader.style.display = "none";
+      } catch (error) {
+        console.error(error);
+        modalImg.style.display = "none";
+        modalImgLoader.style.display = "none";
+      }
     } else {
       modalImg.style.display = "none";
+      modalImgLoader.style.display = "none";
     }
 
+    // Set other modal content
     modalTitle.textContent = cardData.title || "";
 
     if (cardData.description) {
@@ -250,13 +283,8 @@ function createModal() {
       modalCustomContent.style.display = "none";
     }
 
-    modalBackdrop.style.display = "block";
-    modal.style.display = "block";
-    document.body.classList.add("modal-open");
-
-    // Trigger reflow
+    // Trigger reflow and add active classes
     modal.offsetHeight;
-
     modalBackdrop.classList.add("active");
     modal.classList.add("active");
   }
@@ -270,7 +298,10 @@ function createModal() {
       modalBackdrop.style.display = "none";
       modal.style.display = "none";
       document.body.classList.remove("modal-open");
-    }, 300); // Match the transition duration
+      // Reset image state
+      modalImg.src = "";
+      modalImg.style.opacity = "0";
+    }, 300);
   }
 
   // Add click event listeners

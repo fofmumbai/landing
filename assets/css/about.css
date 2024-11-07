@@ -232,3 +232,19 @@
 ..modal-social-links{
   cursor: pointer;
 }
+
+.modal-img-container {
+  position: relative;
+  min-height: 200px; /* Adjust based on your needs */
+}
+
+.modal-img {
+  transition: opacity 0.3s ease;
+}
+
+.modal-img-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
