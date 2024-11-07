@@ -235,7 +235,6 @@
 
 .modal-img-container {
   position: relative;
-  min-height: 200px; /* Adjust based on your needs */
 }
 
 .modal-img {

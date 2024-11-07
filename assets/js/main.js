@@ -148,31 +148,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Modal functionality
 function createModal() {
-  // Create modal HTML structure
-  const modalHTML = `
-    <div class="modal-backdrop">
-      <div class="modal">
-        <button class="modal-close">&times;</button>
-        <div class="modal-content">
-          <div class="modal-img-container">
-            <img src="" alt="" class="modal-img">
-            <div class="modal-img-loader" style="display: none;">Loading...</div>
-          </div>
-          </br>
-          <h3 class="modal-title"></h3>
-          <div class="modal-description"></div>
-          <div class="modal-social-links"></div>
-          <div class="modal-redirect-links"></div>
-          <button class="modal-btn"></button>
-          <div class="modal-custom-content"></div>
-        </div>
-      </div>
-    </div>
-  `;
-
-  // Add modal to document
-  document.body.insertAdjacentHTML("beforeend", modalHTML);
-
   // Get modal elements
   const modalBackdrop = document.querySelector(".modal-backdrop");
   const modal = document.querySelector(".modal");
