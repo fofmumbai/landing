@@ -147,19 +147,35 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Modal functionality
+// Modal functionality
 function createModal() {
-  // Get modal elements
-  const modalBackdrop = document.querySelector(".modal-backdrop");
-  const modal = document.querySelector(".modal");
-  const modalClose = document.querySelector(".modal-close");
-  const modalImg = document.querySelector(".modal-img");
-  const modalImgLoader = document.querySelector(".modal-img-loader");
-  const modalTitle = document.querySelector(".modal-title");
-  const modalDescription = document.querySelector(".modal-description");
-  const modalSocialLinks = document.querySelector(".modal-social-links");
-  const modalRedirectLinks = document.querySelector(".modal-redirect-links");
-  const modalBtn = document.querySelector(".modal-btn");
-  const modalCustomContent = document.querySelector(".modal-custom-content");
+  // Get modal elements and verify they exist
+  const elements = {
+    modalBackdrop: document.querySelector(".modal-backdrop"),
+    modal: document.querySelector(".modal"),
+    modalClose: document.querySelector(".modal-close"),
+    modalImg: document.querySelector(".modal-img"),
+    modalImgLoader: document.querySelector(".modal-img-loader"),
+    modalTitle: document.querySelector(".modal-title"),
+    modalDescription: document.querySelector(".modal-description"),
+    modalSocialLinks: document.querySelector(".modal-social-links"),
+    modalRedirectLinks: document.querySelector(".modal-redirect-links"),
+    modalBtn: document.querySelector(".modal-btn"),
+    modalCustomContent: document.querySelector(".modal-custom-content")
+  };
+
+  // Check if required elements exist
+  const missingElements = Object.entries(elements)
+    .filter(([key, element]) => !element)
+    .map(([key]) => key);
+
+  if (missingElements.length > 0) {
+    console.error('Missing required modal elements:', missingElements);
+    return {
+      openModal: () => console.error('Modal cannot be opened due to missing elements'),
+      closeModal: () => console.error('Modal cannot be closed due to missing elements')
+    };
+  }
 
   // Function to preload image
   function preloadImage(url) {
@@ -173,44 +189,49 @@ function createModal() {
 
   // Function to open modal
   async function openModal(cardData) {
+    if (!cardData) {
+      console.error('No card data provided to openModal');
+      return;
+    }
+
     // Show modal with loading state
-    modalBackdrop.style.display = "block";
-    modal.style.display = "block";
+    elements.modalBackdrop.style.display = "block";
+    elements.modal.style.display = "block";
     document.body.classList.add("modal-open");
 
     // Handle image loading
     if (cardData.image) {
-      modalImg.style.opacity = "0";
-      modalImgLoader.style.display = "block";
+      elements.modalImg.style.opacity = "0";
+      elements.modalImgLoader.style.display = "block";
 
       try {
         await preloadImage(cardData.image);
-        modalImg.src = cardData.image;
-        modalImg.style.display = "block";
-        modalImg.style.opacity = "1";
-        modalImgLoader.style.display = "none";
+        elements.modalImg.src = cardData.image;
+        elements.modalImg.style.display = "block";
+        elements.modalImg.style.opacity = "1";
+        elements.modalImgLoader.style.display = "none";
       } catch (error) {
         console.error(error);
-        modalImg.style.display = "none";
-        modalImgLoader.style.display = "none";
+        elements.modalImg.style.display = "none";
+        elements.modalImgLoader.style.display = "none";
       }
     } else {
-      modalImg.style.display = "none";
-      modalImgLoader.style.display = "none";
+      elements.modalImg.style.display = "none";
+      elements.modalImgLoader.style.display = "none";
     }
 
     // Set other modal content
-    modalTitle.textContent = cardData.title || "";
+    elements.modalTitle.textContent = cardData.title || "";
 
     if (cardData.description) {
-      modalDescription.innerHTML = cardData.description;
-      modalDescription.style.display = "block";
+      elements.modalDescription.innerHTML = cardData.description;
+      elements.modalDescription.style.display = "block";
     } else {
-      modalDescription.style.display = "none";
+      elements.modalDescription.style.display = "none";
     }
 
     // Add social media links
-    modalSocialLinks.innerHTML = "";
+    elements.modalSocialLinks.innerHTML = "";
     if (cardData.socialLinks) {
       cardData.socialLinks.forEach((link) => {
         const socialLink = document.createElement("a");
@@ -218,15 +239,15 @@ function createModal() {
         socialLink.target = "_blank";
         socialLink.rel = "noopener noreferrer";
         socialLink.innerHTML = `<i class="bx ${link.icon}"></i>`;
-        modalSocialLinks.appendChild(socialLink);
+        elements.modalSocialLinks.appendChild(socialLink);
       });
-      modalSocialLinks.style.display = "flex";
+      elements.modalSocialLinks.style.display = "flex";
     } else {
-      modalSocialLinks.style.display = "none";
+      elements.modalSocialLinks.style.display = "none";
     }
 
     // Add redirect links
-    modalRedirectLinks.innerHTML = "";
+    elements.modalRedirectLinks.innerHTML = "";
     if (cardData.redirectLinks && cardData.redirectLinks.length > 0) {
       cardData.redirectLinks.forEach((link) => {
         const redirectLink = document.createElement("a");
@@ -236,60 +257,60 @@ function createModal() {
           <span class="modal-redirect-text">${link.text}</span>
           <i class="bx bx-chevron-right"></i>
         `;
-        modalRedirectLinks.appendChild(redirectLink);
+        elements.modalRedirectLinks.appendChild(redirectLink);
       });
-      modalRedirectLinks.style.display = "block";
+      elements.modalRedirectLinks.style.display = "block";
     } else {
-      modalRedirectLinks.style.display = "none";
+      elements.modalRedirectLinks.style.display = "none";
     }
 
     if (cardData.button) {
-      modalBtn.textContent = cardData.button;
-      modalBtn.style.display = "block";
+      elements.modalBtn.textContent = cardData.button;
+      elements.modalBtn.style.display = "block";
     } else {
-      modalBtn.style.display = "none";
+      elements.modalBtn.style.display = "none";
     }
 
     // Add custom HTML content
     if (cardData.customContent) {
-      modalCustomContent.innerHTML = cardData.customContent;
-      modalCustomContent.style.display = "block";
+      elements.modalCustomContent.innerHTML = cardData.customContent;
+      elements.modalCustomContent.style.display = "block";
     } else {
-      modalCustomContent.style.display = "none";
+      elements.modalCustomContent.style.display = "none";
     }
 
     // Trigger reflow and add active classes
-    modal.offsetHeight;
-    modalBackdrop.classList.add("active");
-    modal.classList.add("active");
+    elements.modal.offsetHeight;
+    elements.modalBackdrop.classList.add("active");
+    elements.modal.classList.add("active");
   }
 
   // Function to close modal
   function closeModal() {
-    modalBackdrop.classList.remove("active");
-    modal.classList.remove("active");
+    elements.modalBackdrop.classList.remove("active");
+    elements.modal.classList.remove("active");
 
     setTimeout(() => {
-      modalBackdrop.style.display = "none";
-      modal.style.display = "none";
+      elements.modalBackdrop.style.display = "none";
+      elements.modal.style.display = "none";
       document.body.classList.remove("modal-open");
       // Reset image state
-      modalImg.src = "";
-      modalImg.style.opacity = "0";
+      elements.modalImg.src = "";
+      elements.modalImg.style.opacity = "0";
     }, 300);
   }
 
-  // Add click event listeners
-  modalClose.addEventListener("click", closeModal);
-  modalBackdrop.addEventListener("click", (e) => {
-    if (e.target === modalBackdrop) {
+  // Add event listeners only if elements exist
+  elements.modalClose.addEventListener("click", closeModal);
+  elements.modalBackdrop.addEventListener("click", (e) => {
+    if (e.target === elements.modalBackdrop) {
       closeModal();
     }
   });
 
   // Add escape key listener
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalBackdrop.style.display === "block") {
+    if (e.key === "Escape" && elements.modalBackdrop.style.display === "block") {
       closeModal();
     }
   });
@@ -297,15 +318,26 @@ function createModal() {
   return { openModal, closeModal };
 }
 
-// Initialize modal
-const { openModal } = createModal();
+// Initialize modal only after DOM is fully loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const { openModal } = createModal();
 
-// Add click event listeners to thirdfold cards
-document.querySelectorAll(".thirdfold__data").forEach((card) => {
-  card.addEventListener("click", () => {
-    const cardData = JSON.parse(card.dataset.modalContent);
-    openModal(cardData);
-  });
+  // Add click event listeners to thirdfold cards
+  const cards = document.querySelectorAll(".thirdfold__data");
+  if (cards.length > 0) {
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        try {
+          const cardData = JSON.parse(card.dataset.modalContent);
+          openModal(cardData);
+        } catch (error) {
+          console.error('Failed to parse card data:', error);
+        }
+      });
+    });
+  } else {
+    console.warn('No thirdfold cards found on the page');
+  }
 });
 
 /*==================== SHOW MENU ====================*/
