@@ -59,20 +59,20 @@
 	<main class="l-main">
 		<section class="contactform section bd-container" id="contact-form">
 			<div class="contact__container bd-grid contact-container">
-				<form class="contact-form">
+				<form class="contact-form" name="contact" netlify>
 					<div class="sticky-note yellow">
 						<textarea class="sticky-input" placeholder="Full Name"></textarea>
-						<div class="name-label">Name</div>
+						<label class="name-label" name="name">Name</label>
 					</div>
 
 					<div class="sticky-note blue">
 						<textarea class="sticky-input" placeholder="email@org.com"></textarea>
-						<div class="name-label">Email</div>
+						<label class="name-label" name="email">Email</label>
 					</div>
 
 					<div class="sticky-note pink">
 						<textarea class="sticky-input" placeholder="Messsage"></textarea>
-						<div class="name-label">Message</div>
+						<label class="name-label" email="message">Message</label>
 					</div>
 
 					<button type="submit" class="submit-button">Send Message</button>
