@@ -122,11 +122,11 @@
   }
 
   .sticky-input{
-	font-size: 1.7rem;
+	font-size: 1.5rem;
   }
 
   .sticky-input::placeholder {
-	font-size: 1.7rem;
+	font-size: 1.5rem;
   }
 
   .name-label{
