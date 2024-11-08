@@ -57,21 +57,22 @@
 	</div>
 
 	<main class="l-main">
+		<!--========== CONTACT SECTION ==========-->
 		<section class="contactform section bd-container" id="contact-form">
 			<div class="contact__container bd-grid contact-container">
-				<form class="contact-form" name="contact" method="POST" data-netlify="true">
+				<form class="contact-form" name="contact" method="POST" data-netlify="true" onsubmit="return validateForm()">
 					<div class="sticky-note yellow">
-						<textarea class="sticky-input" placeholder="Full Name" name="message"></textarea>
+						<textarea class="sticky-input" placeholder="Full Name" name="name" id="name-textarea"></textarea>
 						<label class="name-label">Name</label>
 					</div>
 
 					<div class="sticky-note blue">
-						<textarea class="sticky-input" id="email-textarea" placeholder="email@org.com" name="message"></textarea>
+						<textarea class="sticky-input" placeholder="email@org.com" name="email" id="email-textarea"></textarea>
 						<label class="name-label">Email</label>
 					</div>
 
 					<div class="sticky-note pink">
-						<textarea class="sticky-input" placeholder="Messsage" name="message"></textarea>
+						<textarea class="sticky-input" placeholder="Message" name="message" id="message-textarea"></textarea>
 						<label class="name-label">Message</label>
 					</div>
 
@@ -136,14 +137,47 @@
 	<script src="assets/js/main.js"></script>
 
 	<script>
-		function validateEmail() {
+		function sanitizeInput( input ) {
+			// Sanitize input to prevent script injection
+			return input.replace( /</g, "&lt;" ).replace( />/g, "&gt;" ).replace( /"/g, "&quot;" ).replace( /'/g, "&#39;" );
+		}
+
+		function validateForm() {
+			// Validate email input
 			const emailTextarea = document.getElementById( 'email-textarea' );
 			const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-			if ( !emailPattern.test( emailTextarea.value.trim() ) ) {
+			const emailValue = emailTextarea.value.trim();
+
+			if ( !emailPattern.test( emailValue ) ) {
 				alert( 'Please enter a valid email address.' );
-				return false; // Prevent form submission
+				emailTextarea.focus();
+				return false;
 			}
-			return true; // Allow form submission
+
+			// Sanitize and validate the name input
+			const nameTextarea = document.getElementById( 'name-textarea' );
+			const nameValue = sanitizeInput( nameTextarea.value.trim() );
+
+			if ( nameValue === "" || /[<>]/.test( nameValue ) ) {
+				alert( 'Name cannot be empty and must not contain invalid characters.' );
+				nameTextarea.value = ""; // Clear potentially malicious input
+				nameTextarea.focus();
+				return false;
+			}
+
+			// Sanitize and validate the message input
+			const messageTextarea = document.getElementById( 'message-textarea' );
+			const messageValue = sanitizeInput( messageTextarea.value.trim() );
+
+			if ( messageValue === "" || /[<>]/.test( messageValue ) ) {
+				alert( 'Message cannot be empty and must not contain invalid characters.' );
+				messageTextarea.value = ""; // Clear potentially malicious input
+				messageTextarea.focus();
+				return false;
+			}
+
+			// If all validations pass
+			return true;
 		}
 	</script>
 </body>
