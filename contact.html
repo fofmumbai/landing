@@ -61,22 +61,23 @@
 			<div class="contact__container bd-grid contact-container">
 				<form class="contact-form" name="contact" method="POST" data-netlify="true">
 					<div class="sticky-note yellow">
-						<input type="text" name="name" class="sticky-input input-1" placeholder="Full Name"></input>
-						<label class="name-label">Name</label>
+						<textarea name="name" class="sticky-input" id="input-1" placeholder="Full Name"></textarea>
+						<label class="name-label" for="input-1">Name</label>
 					</div>
 
 					<div class="sticky-note blue">
-						<input type="email" name="email" class="sticky-input input-2" placeholder="email@org.com"></input>
-						<label class="name-label">Email</label>
+						<textarea name="email" class="sticky-input input-2" placeholder="email@org.com"></textarea>
+						<label class="name-label" for="input-2">Email</label>
 					</div>
 
 					<div class="sticky-note pink">
-						<textarea type="textarea" name="message" class="sticky-input input-3" placeholder="Messsage"></textarea>
-						<label class="name-label">Message</label>
+						<textarea name="message" class="sticky-input input-3" placeholder="Message"></textarea>
+						<label class="name-label" for="input-3">Message</label>
 					</div>
 
 					<button type="submit" class="submit-button">Send Message</button>
 				</form>
+
 		</section>
 
 	</main>
