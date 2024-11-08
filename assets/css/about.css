@@ -84,26 +84,40 @@
 }
 
 .timeline-content h3 {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  font-size: 25px;
+  margin-top: .75rem;
+  font-size: 1.5rem;
   font-weight: 500;
 }
 
 .timeline-content span {
-  font-size: 15px;
-  color: #a4a4a4;
+  font-size: 1.2rem;
+  color: #2a18ef;
 }
 
 .timeline-content p {
-  font-size: 14px;
+  font-size: 1rem;
   line-height: 1.5em;
   word-spacing: 1px;
-  color: #888;
+  color: #757575;
+}
+
+.timeline-image{
+  width: 175px;
+  height: 125px;
+  overflow: hidden;
+  border-radius: .75rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
 }
 
 .community-text {
-  color: #2b90f6;
+  color: #2a18ef;
   line-height: 1;
   font-family: "caveat";
   font-size: 4.5rem;
