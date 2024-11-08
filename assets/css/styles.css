@@ -17,7 +17,7 @@
   --container-color: #fff;
 
   /*========== Font and typography ==========*/
-  --body-font: work-sans, sans-serif;
+  --body-font: "work sans", sans-serif;
   --biggest-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --h3-font-size: 1.125rem;
