@@ -673,49 +673,62 @@
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 	<script>
 		const memberCountElement = document.getElementById( 'memberCount' );
-		const maxCount = 1676;
-		const initialCount = 0;
-		const countRange = maxCount - initialCount;
-		let confettiPlayed = false;
+			const maxCount = 1676;
+			const initialCount = 0;
+			const countRange = maxCount - initialCount;
+			let confettiPlayed = false;
+			let textChangeTimeout = null;
 
-		function fireConfetti() {
-			confetti( {
-				particleCount: 100,
-				spread: 70,
-				origin: {y: 0.6},
-				colors: [ '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff' ]
-			} );
-		}
-
-		window.addEventListener( 'scroll', () => {
-			const footer = document.querySelector( '.thirdfold' );
-			const footerTop = footer.getBoundingClientRect().top + window.scrollY;
-			const journeySection = document.getElementById( 'journey' );
-			const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
-
-			// Calculate scroll percentage based on distance between journey start and footer
-			const scrollableDistance = footerTop - journeyTop;
-			const scrolled = window.scrollY - journeyTop;
-			const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
-
-			// Calculate count based on scroll percentage
-			const count = Math.round( initialCount + scrollPercent * countRange );
-			memberCountElement.textContent = `${count} members`;
-
-			// Force max count and trigger confetti when near footer
-			if ( footer.getBoundingClientRect().top <= window.innerHeight ) {
-				memberCountElement.textContent = `${maxCount} members`;
-
-				// Only fire confetti once when maxCount is reached
-				if ( !confettiPlayed ) {
-					fireConfetti();
-					confettiPlayed = true;
-				}
-			} else {
-				// Reset confetti flag when scrolling back up
-				confettiPlayed = false;
+			function fireConfetti() {
+				confetti( {
+					particleCount: 100,
+					spread: 70,
+					origin: {y: 0.6},
+					colors: [ '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff' ]
+				} );
 			}
-		} );
+
+			function switchText() {
+				memberCountElement.textContent = "India's #1 FOF";
+
+				// Reset back to member count after 5 seconds
+				textChangeTimeout = setTimeout( () => {
+					memberCountElement.textContent = `${maxCount} members`;
+				}, 2000 );
+			}
+
+			window.addEventListener( 'scroll', () => {
+				const footer = document.querySelector( '.thirdfold' );
+				const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+				const journeySection = document.getElementById( 'journey' );
+				const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
+
+				// Calculate scroll percentage based on distance between journey start and footer
+				const scrollableDistance = footerTop - journeyTop;
+				const scrolled = window.scrollY - journeyTop;
+				const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
+
+				// Calculate count based on scroll percentage
+				const count = Math.round( initialCount + scrollPercent * countRange );
+
+				// If we're not at the footer, show the current count
+				if ( footer.getBoundingClientRect().top > window.innerHeight ) {
+					memberCountElement.textContent = `${count} members`;
+					confettiPlayed = false;
+					// Clear any existing timeout when scrolling back up
+					if ( textChangeTimeout ) {
+						clearTimeout( textChangeTimeout );
+						textChangeTimeout = null;
+					}
+				} else {
+					// When reaching the footer
+					if ( !confettiPlayed ) {
+						fireConfetti();
+						switchText();
+						confettiPlayed = true;
+					}
+				}
+			} );
 	</script>
 </body>
 </html>
