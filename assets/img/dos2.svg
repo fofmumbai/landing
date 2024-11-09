@@ -2,10 +2,10 @@
 <g clip-path="url(#clip0_253_4077)">
 <rect width="250" height="250" fill="white"/>
 <rect x="50" y="49.9995" width="150" height="150" fill="url(#pattern0_253_4077)"/>
-<line y1="49.5" x2="250" y2="49.5" stroke="#FF000D"/>
-<line y1="200.5" x2="250" y2="200.5" stroke="#FF000D"/>
-<line x1="200.5" y1="250" x2="200.5" stroke="#FF000D"/>
-<line x1="49.5" y1="250" x2="49.5" stroke="#FF000D"/>
+<line y1="49.5" x2="250" y2="49.5" stroke="#17C537"/>
+<line y1="200.5" x2="250" y2="200.5" stroke="#17C537"/>
+<line x1="200.5" y1="250" x2="200.5" stroke="#17C537"/>
+<line x1="49.5" y1="250" x2="49.5" stroke="#17C537"/>
 </g>
 <defs>
 <pattern id="pattern0_253_4077" patternContentUnits="objectBoundingBox" width="1" height="1">

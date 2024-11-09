@@ -1,4 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petrona:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Petrona:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+  font-family: sans-serif;
+  font-size: 1rem;
+}
 
 .section-title-center {
   font-family: "work sans", sans-serif;
@@ -6,8 +11,18 @@
 }
 
 .secondfold__description {
-  font-family: "work sans", sans-serif;
+  font-family: 'work sans', sans-serif;
   font-size: 1rem;
+}
+
+#typography-description{
+ font-family: "Work Sans", serif;
+  font-size: 1rem;
+}
+
+#typography-title{
+  font-family: "work sans", sans-serif;
+  font-size: 2rem;
 }
 
 .color__box {

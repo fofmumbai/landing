@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
 .contact__container {
   display: flex;
   justify-content: center;
@@ -27,7 +29,7 @@
   font-weight: 400;
   color: #6d6d6d;
   margin-bottom: 1rem;
-  text-align: justify;
+  text-align: center;
   padding: 1rem;
 }
 
@@ -161,6 +163,10 @@
 
   .name-label{
 	font-size: 1.2rem;
+  }
+
+  .contact__title h1{
+    text-align: justify;
   }
 }
 

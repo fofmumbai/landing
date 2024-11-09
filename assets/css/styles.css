@@ -195,6 +195,7 @@ img {
 
 .nav__link {
   transition: 0.3s;
+  padding: .5rem;
 }
 
 .nav__link:hover {
@@ -389,6 +390,13 @@ img {
 .home__img {
   width: auto;
   justify-self: center;
+}
+
+.community-text {
+  color: #2a18ef;
+  line-height: 1;
+  font-family: "caveat";
+  font-size: 4rem;
 }
 
 #sticker {
@@ -690,7 +698,6 @@ img {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  gap: 1rem;
   margin-bottom: var(--mb-2);
 }
 
@@ -873,9 +880,9 @@ body.modal-open {
   justify-content: space-around;
 }
 
-.button_arrow {
+/* .button_arrow {
   rotate: -45deg;
-}
+} */
 
 .album__button,
 .home__button__2 {
@@ -1226,7 +1233,7 @@ body.modal-open {
   }
 
   .sticker1 {
-    width: 200px;
+    width: 155px;
     top: 20rem;
     left: 10rem;
   }
@@ -1234,25 +1241,25 @@ body.modal-open {
   .sticker2 {
     top: 35rem;
     left: 17rem;
-    width: 250px;
+    width: 205px;
   }
 
   .sticker3 {
     top: 8rem;
     right: 20rem;
-    width: 200px;
+    width: 160px;
   }
 
   .sticker4 {
     top: 31rem;
     right: 30rem;
-    width: 165px;
+    width: 140px;
   }
 
   .sticker5 {
     top: 5rem;
     left: 25rem;
-    width: 252px;
+    width: 210px;
   }
 
   .firstfold__container {

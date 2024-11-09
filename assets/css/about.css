@@ -261,3 +261,19 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.crew-name-social{
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  margin-top: -.75rem;
+}
+
+.modal-social-name{
+  margin-left: .75rem;
+  margin-top: 7px;
+}
+
+.modal-description {
+  margin-top: -.75rem;
+}

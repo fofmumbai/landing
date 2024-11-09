@@ -240,7 +240,7 @@ function createModal() {
         socialLink.href = link.url;
         socialLink.target = "_blank";
         socialLink.rel = "noopener noreferrer";
-        socialLink.innerHTML = `<i class="bx ${link.icon}"></i>`;
+        socialLink.innerHTML = `<i class="bx ${link.icon} modal-social-name"></i>`;
         elements.modalSocialLinks.appendChild(socialLink);
       });
       elements.modalSocialLinks.style.display = "flex";
@@ -259,7 +259,7 @@ function createModal() {
         redirectLink.className = "modal-redirect-link";
         redirectLink.innerHTML = `
           <span class="modal-redirect-text">${link.text}</span>
-          <i class="bx bx-chevron-right"></i>
+          <i class="bx bx-right-arrow-alt"></i>
         `;
         elements.modalRedirectLinks.appendChild(redirectLink);
       });
