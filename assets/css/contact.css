@@ -178,13 +178,20 @@
   border: none;
 }
 
+.social-logo{
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.156);
+  border-radius: .75rem;
+}
+
 .social-logo img {
   opacity: 1;
   width: 40px;
 }
 
 .partner-logo a:hover img {
-  filter: grayscale(0);
+  filter: grayscale(70%);
+  transform: translate(0);
+  opacity: .8;
 }
 
 .social-grid{
