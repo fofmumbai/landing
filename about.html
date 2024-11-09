@@ -77,7 +77,7 @@
 					<h2 class="section-title" style="font-size: 2rem; font-weight: 500;">Look at our Journey</h2>
 				</div>
 				<div style="display: flex;">
-					<h1 class="member__count" id="memberCount" style="text-align: center;">0 members </h1>
+					<h1 class="member__count" id="memberCount" style="text-align: center;">0 members</h1>
 				</div>
 			</div>
 		</section>
@@ -670,33 +670,52 @@
 	<!--========== MAIN JS ==========-->
 	<script src="assets/js/main.js"></script>
 
+	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 	<script>
 		const memberCountElement = document.getElementById( 'memberCount' );
-			const maxCount = 1676;
-			const initialCount = 0;
-			const countRange = maxCount - initialCount;
+		const maxCount = 1676;
+		const initialCount = 0;
+		const countRange = maxCount - initialCount;
+		let confettiPlayed = false;
 
-			// Track scroll and make member count sticky
-			window.addEventListener( 'scroll', () => {
-				const footer = document.querySelector( '.thirdfold' );
-				const footerTop = footer.getBoundingClientRect().top + window.scrollY;
-				const journeySection = document.getElementById( 'journey' );
-				const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
-
-				// Calculate scroll percentage based on distance between journey start and footer
-				const scrollableDistance = footerTop - journeyTop;
-				const scrolled = window.scrollY - journeyTop;
-				const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
-
-				// Calculate count based on scroll percentage
-				const count = Math.round( initialCount + scrollPercent * countRange );
-				memberCountElement.textContent = `${count} members`;
-
-				// Force max count when near footer
-				if ( footer.getBoundingClientRect().top <= window.innerHeight ) {
-					memberCountElement.textContent = `${maxCount} members`;
-				}
+		function fireConfetti() {
+			confetti( {
+				particleCount: 100,
+				spread: 70,
+				origin: {y: 0.6},
+				colors: [ '#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff' ]
 			} );
+		}
+
+		window.addEventListener( 'scroll', () => {
+			const footer = document.querySelector( '.thirdfold' );
+			const footerTop = footer.getBoundingClientRect().top + window.scrollY;
+			const journeySection = document.getElementById( 'journey' );
+			const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
+
+			// Calculate scroll percentage based on distance between journey start and footer
+			const scrollableDistance = footerTop - journeyTop;
+			const scrolled = window.scrollY - journeyTop;
+			const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
+
+			// Calculate count based on scroll percentage
+			const count = Math.round( initialCount + scrollPercent * countRange );
+			memberCountElement.textContent = `${count} members`;
+
+			// Force max count and trigger confetti when near footer
+			if ( footer.getBoundingClientRect().top <= window.innerHeight ) {
+				memberCountElement.textContent = `${maxCount} members`;
+
+				// Only fire confetti once when maxCount is reached
+				if ( !confettiPlayed ) {
+					fireConfetti();
+					confettiPlayed = true;
+				}
+			} else {
+				// Reset confetti flag when scrolling back up
+				confettiPlayed = false;
+			}
+		} );
 	</script>
 </body>
 </html>
