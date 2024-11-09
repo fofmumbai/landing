@@ -161,7 +161,7 @@ function createModal() {
     modalSocialLinks: document.querySelector(".modal-social-links"),
     modalRedirectLinks: document.querySelector(".modal-redirect-links"),
     modalBtn: document.querySelector(".modal-btn"),
-    modalCustomContent: document.querySelector(".modal-custom-content")
+    modalCustomContent: document.querySelector(".modal-custom-content"),
   };
 
   // Check if required elements exist
@@ -170,10 +170,12 @@ function createModal() {
     .map(([key]) => key);
 
   if (missingElements.length > 0) {
-    console.error('Missing required modal elements:', missingElements);
+    console.error("Missing required modal elements:", missingElements);
     return {
-      openModal: () => console.error('Modal cannot be opened due to missing elements'),
-      closeModal: () => console.error('Modal cannot be closed due to missing elements')
+      openModal: () =>
+        console.error("Modal cannot be opened due to missing elements"),
+      closeModal: () =>
+        console.error("Modal cannot be closed due to missing elements"),
     };
   }
 
@@ -190,7 +192,7 @@ function createModal() {
   // Function to open modal
   async function openModal(cardData) {
     if (!cardData) {
-      console.error('No card data provided to openModal');
+      console.error("No card data provided to openModal");
       return;
     }
 
@@ -252,6 +254,8 @@ function createModal() {
       cardData.redirectLinks.forEach((link) => {
         const redirectLink = document.createElement("a");
         redirectLink.href = link.url;
+        redirectLink.target = "_blank";
+        redirectLink.rel = "noopener noreferrer";
         redirectLink.className = "modal-redirect-link";
         redirectLink.innerHTML = `
           <span class="modal-redirect-text">${link.text}</span>
@@ -310,7 +314,10 @@ function createModal() {
 
   // Add escape key listener
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && elements.modalBackdrop.style.display === "block") {
+    if (
+      e.key === "Escape" &&
+      elements.modalBackdrop.style.display === "block"
+    ) {
       closeModal();
     }
   });
@@ -319,7 +326,7 @@ function createModal() {
 }
 
 // Initialize modal only after DOM is fully loaded
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   const { openModal } = createModal();
 
   // Add click event listeners to thirdfold cards
@@ -331,12 +338,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const cardData = JSON.parse(card.dataset.modalContent);
           openModal(cardData);
         } catch (error) {
-          console.error('Failed to parse card data:', error);
+          console.error("Failed to parse card data:", error);
         }
       });
     });
   } else {
-    console.warn('No thirdfold cards found on the page');
+    console.warn("No thirdfold cards found on the page");
   }
 });
 

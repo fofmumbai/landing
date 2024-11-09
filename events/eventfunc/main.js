@@ -106,6 +106,8 @@ function createModal() {
       cardData.redirectLinks.forEach((link) => {
         const redirectLink = document.createElement("a");
         redirectLink.href = link.url;
+        redirectLink.target = "_blank";
+        redirectLink.rel = "noopener noreferrer";
         redirectLink.className = "modal-redirect-link";
         redirectLink.innerHTML = `
           <span class="modal-redirect-text">${link.text}</span>
