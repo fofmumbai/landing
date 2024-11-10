@@ -672,12 +672,47 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 	<script>
-		const memberCountElement = document.getElementById( 'memberCount' );
-			const maxCount = 1676;
+		async function getMemberCount() {
+				try {
+					const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQjcDdG95OB-pUlwP8gwYc0vQ2YOlrYXgAdi8TD5tDApRjRUBEkkTyRxSJJ_abVGzX31shHlg-VTw-D/pub?gid=2059112758&single=true&output=csv';
+					const response = await fetch( csvUrl );
+					const text = await response.text();
+
+					// Split into rows and find Mumbai's row
+					const rows = text.split( '\n' );
+					const mumbaiRow = rows.find( row => row.includes( 'Mumbai' ) );
+
+					if ( mumbaiRow ) {
+						// Split the row and get the count (third column)
+						const columns = mumbaiRow.split( '\t' );
+						// Remove the comma and convert to number
+						const memberCount = parseInt( columns[ 2 ].replace( ',', '' ) );
+
+						console.log( 'Fetched Mumbai member count:', memberCount ); // For debugging
+						return memberCount;
+					} else {
+						console.error( 'Mumbai data not found' );
+						return 1677; // fallback to current count
+					}
+				} catch ( error ) {
+					console.error( 'Error fetching member count:', error );
+					return 1677; // fallback to current count
+				}
+			}
+
+			const memberCountElement = document.getElementById( 'memberCount' );
+			let maxCount = 1677; // Updated default value to match current count
 			const initialCount = 0;
-			const countRange = maxCount - initialCount;
+			let countRange = maxCount - initialCount;
 			let confettiPlayed = false;
 			let textChangeTimeout = null;
+
+			async function initializeMemberCount() {
+				const realCount = await getMemberCount();
+				maxCount = realCount;
+				countRange = maxCount - initialCount;
+				memberCountElement.textContent = `${initialCount} members`; // Reset to initial state
+			}
 
 			function fireConfetti() {
 				confetti( {
@@ -691,7 +726,7 @@
 			function switchText() {
 				memberCountElement.textContent = "India's #1 FOF";
 
-				// Reset back to member count after 5 seconds
+				// Reset back to member count after 2 seconds
 				textChangeTimeout = setTimeout( () => {
 					memberCountElement.textContent = `${maxCount} members`;
 				}, 2000 );
@@ -703,25 +738,20 @@
 				const journeySection = document.getElementById( 'journey' );
 				const journeyTop = journeySection.getBoundingClientRect().top + window.scrollY;
 
-				// Calculate scroll percentage based on distance between journey start and footer
 				const scrollableDistance = footerTop - journeyTop;
 				const scrolled = window.scrollY - journeyTop;
 				const scrollPercent = Math.min( Math.max( scrolled / scrollableDistance, 0 ), 10 );
 
-				// Calculate count based on scroll percentage
 				const count = Math.round( initialCount + scrollPercent * countRange );
 
-				// If we're not at the footer, show the current count
 				if ( footer.getBoundingClientRect().top > window.innerHeight ) {
 					memberCountElement.textContent = `${count} members`;
 					confettiPlayed = false;
-					// Clear any existing timeout when scrolling back up
 					if ( textChangeTimeout ) {
 						clearTimeout( textChangeTimeout );
 						textChangeTimeout = null;
 					}
 				} else {
-					// When reaching the footer
 					if ( !confettiPlayed ) {
 						fireConfetti();
 						switchText();
@@ -729,6 +759,12 @@
 					}
 				}
 			} );
+
+			// Initialize the counter when the page loads
+			initializeMemberCount();
+
+			// Refresh the count every 5 minutes
+			setInterval( initializeMemberCount, 5 * 60 * 1000 );
 	</script>
 </body>
 </html>
