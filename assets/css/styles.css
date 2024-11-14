@@ -901,6 +901,29 @@ body.modal-open {
   padding: 0 1.1rem;
 }
 
+/* DISABLED BUTTON */
+.disabled{
+  background-color: #d4d4d4;
+  color: #888888;
+  cursor: not-allowed;
+  border: 2px solid #d4d4d4;
+  touch-action: none;
+}
+
+.disabled:hover{
+  background-color: #d4d4d4;
+  border-radius: .75rem;
+}
+
+.disabled:hover .arrow-icon {
+  transform: translateX(0);
+  opacity: 0;
+}
+
+.disabled:hover span {
+  transform: translateX(0px);
+}
+
 /* ====== IMAGE SLIDER======= */
 .slider-section {
   width: 100%;
